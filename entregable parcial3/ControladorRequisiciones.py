@@ -116,6 +116,7 @@ class controladorRequi:
                 cursor.execute(sqlSelect, actualizar)
                 conx.commit()
                 conx.close()
+                messagebox.showinfo("Actualización exitosa", "Se actualizó el número de requisición exitosamente")
                 
             except sqlite3.OperationalError:
                 print ("Error para actualizar requisición")
@@ -138,6 +139,7 @@ class controladorRequi:
                 cursor.execute(sqlSelect, actualizar)
                 conx.commit()
                 conx.close()
+                messagebox.showinfo("Actualización exitosa", "Se actualizó la fecha exitosamente")
                 
             except sqlite3.OperationalError:
                 print ("Error para actualizar fecha")
@@ -160,6 +162,7 @@ class controladorRequi:
                 cursor.execute(sqlSelect, actualizar)
                 conx.commit()
                 conx.close()
+                messagebox.showinfo("Actualización exitosa", "Se actualizó la partida exitosamente")
                 
             except sqlite3.OperationalError:
                 print ("Error para actualizar partida")
@@ -182,6 +185,7 @@ class controladorRequi:
                 cursor.execute(sqlSelect, actualizar)
                 conx.commit()
                 conx.close()
+                messagebox.showinfo("Actualización exitosa", "Se actualizó la cantidad exitosamente")
                 
             except sqlite3.OperationalError:
                 print ("Error para actualizar requisición")
@@ -204,6 +208,7 @@ class controladorRequi:
                 cursor.execute(sqlSelect, actualizar)
                 conx.commit()
                 conx.close()
+                messagebox.showinfo("Actualización exitosa", "Se actualizó la descripción exitosamente")
                 
             except sqlite3.OperationalError:
                 print ("Error para actualizar descripción")
@@ -226,6 +231,7 @@ class controladorRequi:
                 cursor.execute(sqlSelect, actualizar)
                 conx.commit()
                 conx.close()
+                messagebox.showinfo("Actualización exitosa", "Se actualizó el área del solicitante exitosamente")
                 
             except sqlite3.OperationalError:
                 print ("Error para actualizar área solicitante")

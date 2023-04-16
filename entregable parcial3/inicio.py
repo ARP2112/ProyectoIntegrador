@@ -34,31 +34,30 @@ def EliminarRequi():
         
 def ActualizarRequi():
     controladorR.ActualizarRequiNum(varID.get(), varRequi1.get())
-    messagebox.showinfo("Actualización exitosa", "Se actualizó el número de requisición exitosamente")
+    
 
 def ActualizarFecha():
     controladorR.ActualizarFecha(varID.get(), varFecha1.get())
-    messagebox.showinfo("Actualización exitosa", "Se actualizó la fecha exitosamente")
+    
 
 def ActualizarPartida():
     controladorR.ActualizarPartida(varID.get(), varPartida1.get())
-    messagebox.showinfo("Actualización exitosa", "Se actualizó la partida exitosamente")
+    
     
 def ActualizarCantidad():
     controladorR.ActualizarCantidad(varID.get(), varCantidad1.get())
-    messagebox.showinfo("Actualización exitosa", "Se actualizó la cantidad exitosamente")
+    
 
 def ActualizarDescr():
     controladorR.ActualizarDescr(varID.get(), varDescr1.get())
-    messagebox.showinfo("Actualización exitosa", "Se actualizó la descripción exitosamente")
+    
 
 def ActualizarASoli():
     controladorR.ActualizarASoli(varID.get(), varASolicitante1.get())
-    messagebox.showinfo("Actualización exitosa", "Se actualizó el área del solicitante exitosamente")
 
 Ventana = Tk()
 Ventana.title("REQUISICIONES")
-Ventana.geometry("500x400")
+Ventana.geometry("800x500")
 
 panel = ttk.Notebook(Ventana)
 panel.pack(fill = 'both', expand = 'yes')
