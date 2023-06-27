@@ -235,4 +235,4 @@ class controladorRequi:
                 
             except sqlite3.OperationalError:
                 print ("Error para actualizar área solicitante")
-            
+        

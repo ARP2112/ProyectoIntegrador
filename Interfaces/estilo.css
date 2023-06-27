@@ -12,7 +12,7 @@ body {
   }
 
   .container {
-    max-width: 600px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 20px;
     background-color: #ffffff;
@@ -22,6 +22,12 @@ body {
   }
 
   label {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  label1 {
+    color: #ffffff;
     display: block;
     margin-bottom: 10px;
   }
@@ -44,7 +50,7 @@ body {
   }
 
   .containerM {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 50px;
     background-color: #ffffff;
@@ -113,15 +119,34 @@ body {
     cursor: pointer;
   }
 
-  .fecha-input {
-    padding: 8px;
-    font-size: 14px;
+  .my-date-input {
+    color: #0faaf1b7;
+    background-color: #f0f0f0;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 5px;
   }
-  
-  .fecha-input:focus {
-    outline: none;
-    border-color: #0066cc;
-    box-shadow: 0 0 5px #0066cc;
+
+  .container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 7px solid #dddddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-image:image-set("image table.jpg");
   }
