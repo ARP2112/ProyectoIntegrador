@@ -1,0 +1,17 @@
+.bodyint{
+    background-color: whitesmoke;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    color: rgb(0, 0, 0);
+}
+
+button{
+    background-color: rgb(116, 116, 116);
+    text-align: center;
+}
+
+.default{
+    margin: auto;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+}
