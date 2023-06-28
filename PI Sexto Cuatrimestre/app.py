@@ -30,11 +30,11 @@ def requisiciones():
 
 @app.route('/cotizaciones')
 def cotizaciones():
-    return render_template('RegistrarCotizaciones.html')
+    return render_template('RegistrarCotizacion.html')
 
 @app.route('/proovedores')
 def proveedores():
-    return render_template('RegistrarProveedores.html')
+    return render_template('RegistrarProveedor.html')
 
 #Registrar
 @app.route('/registrarR',methods=['GET','POST'])
@@ -79,7 +79,7 @@ def registrarC():
 
 @app.route('/registrarP',methods=['GET','POST'])
 def registrarP():
-    return render_template('RegistrarProveedores.html')
+    return render_template('RegistrarProveedor.html')
 
 #Actualizar
 @app.route('/actualizarR',methods=['GET','POST'])
