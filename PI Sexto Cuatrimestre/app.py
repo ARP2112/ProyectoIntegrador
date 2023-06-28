@@ -39,19 +39,17 @@ def proveedores():
 #Registrar
 @app.route('/registrarR',methods=['GET','POST'])
 def registrarR():
-    #return redirect(url_for('Admin_med registrar usuario.html'))
     if request.method=='POST': #Peticiones del usuario a traves del metodo POST
-        Nnombre=request.form['nombre']
-        Nap=request.form['AP']
-        Nam=request.form['AM']
-        Ncp=request.form['CP']
-        Npass=request.form['pass']
-        Nce=request.form['CE']
-        Nrol=request.form['rol']
-        #print(titulo,artista,anio)
+        Nfecha=request.form['fecha']
+        Nnumad=request.form['numeroadquisicion']
+        Ncant=request.form['cantidad']
+        Npart=request.form['partida']
+        Ndescrip=request.form['descripcion']
+        Nas=request.form['areasolicitante']
+        
         CS=mysql.connection.cursor()
-        CS.execute('insert into admin_med_registrar_usuarios(nombre,ap,am,cedulap,contraseña,correo,rol) values(%s,%s,%s,%s,%s,%s,%s)',
-                   (Nnombre,Nap,Nam,Ncp,Npass,Nce,Nrol)) #Para ejecutar codigo sql, y pasamos parametros
+        CS.execute('insert into requisicion(fecha,numeroadquisicion,cantidad,partida,descripcion,areasolicitante) values(%s,%s,%s,%s,%s,%s)',
+                   (Nfecha,Nnumad,Ncant,Npart,Ndescrip,Nas)) #Para ejecutar codigo sql, y pasamos parametros
         mysql.connection.commit()
 
     flash('Requisicion registrada')
@@ -60,18 +58,16 @@ def registrarR():
 @app.route('/registrarC',methods=['GET','POST'])
 def registrarC():
     if request.method=='POST': #Peticiones del usuario a traves del metodo POST
-        Nmedico=request.form['medico']
-        Npaciente=request.form['paciente']
-        Nap=request.form['AP']
-        Nam=request.form['AM']
-        Nfn=request.form['FN']
-        Nec=request.form['EC']
-        Nal=request.form['AL']
-        Naf=request.form['AF']
-        #print(titulo,artista,anio)
+        Nval=request.form['validar']
+        Nnumcot=request.form['numerocotizacion']
+        Nfechac=request.form['fecha']
+        Nem=request.form['empresa']
+        Nrfc=request.form['rfc']
+        Nidd=request.form['id_domicilio']
+      
         CS=mysql.connection.cursor()
-        CS.execute('insert into expediente_paciente(medico_atiende,nombre_paciente,ap_paciente,am_paciente,fecha_nacimiento,enfermedades_cronicas,alergias,antecedentes_familiares) values(%s,%s,%s,%s,%s,%s,%s,%s)',
-                   (Nmedico,Npaciente,Nap,Nam,Nfn,Nec,Nal,Naf)) #Para ejecutar codigo sql, y pasamos parametros
+        CS.execute('insert into cotizacion(validar,numerocotizacion,fecha,empresa,rfc,id_domicilio) values(%s,%s,%s,%s,%s,%s)',
+                   (Nval,Nnumcot,Nfechac,Nem,Nrfc,Nidd)) #Para ejecutar codigo sql, y pasamos parametros
         mysql.connection.commit()
 
     flash('Cotizacion registrada')
@@ -79,6 +75,20 @@ def registrarC():
 
 @app.route('/registrarP',methods=['GET','POST'])
 def registrarP():
+    if request.method=='POST': #Peticiones del usuario a traves del metodo POST
+        Nnombre=request.form['nombre']
+        Nap=request.form['ap']
+        Nam=request.form['am']
+        Nrfcp=request.form['rfc']
+        Nempp=request.form['empresa']
+        Niddp=request.form['id_domicilio']
+        
+        CS=mysql.connection.cursor()
+        CS.execute('insert into proveedores(nombre,ap,am,rfc,empresa,id_domicilio) values(%s,%s,%s,%s,%s,%s)',
+                   (Nnombre,Nap,Nam,Nrfcp,Nempp,Niddp)) #Para ejecutar codigo sql, y pasamos parametros
+        mysql.connection.commit()
+
+    flash('Proveedor registrado')
     return render_template('RegistrarProveedor.html')
 
 #Actualizar
