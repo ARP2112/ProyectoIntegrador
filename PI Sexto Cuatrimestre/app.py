@@ -30,12 +30,13 @@ def requisiciones():
 
 @app.route('/cotizaciones')
 def cotizaciones():
-    return render_template('index.html')
+    return render_template('RegistrarCotizaciones.html')
 
 @app.route('/proovedores')
 def proveedores():
-    return render_template('index.html')
+    return render_template('RegistrarProveedores.html')
 
+#Registrar
 @app.route('/registrarR',methods=['GET','POST'])
 def registrarR():
     #return redirect(url_for('Admin_med registrar usuario.html'))
@@ -76,49 +77,62 @@ def registrarC():
     flash('Cotizacion registrada')
     return render_template('RegistrarCotizacion.html') #Reedireccionamiento a la vista index
 
-@app.route('/Login',methods=['GET','POST'])
-def login():
-    return render_template('Interfaz login.html')
+@app.route('/registrarP',methods=['GET','POST'])
+def registrarP():
+    return render_template('RegistrarProveedores.html')
 
+#Actualizar
+@app.route('/actualizarR',methods=['GET','POST'])
+def actualizarR():
+    return render_template('ActualizarRequisicion.html')
 
-@app.route('/actualizarPaciente',methods=['GET','POST'])
-def actualizarPaciente():
-    return render_template('Actualizar paciente.html')
+@app.route('/actualizarC',methods=['GET','POST'])
+def actualizarC():
+    return render_template('ActualizarCotizacion.html')
 
-@app.route('/actualizarMedico',methods=['GET','POST'])
-def actualizarMedico():
-    return render_template('Admin_med actualizar datos.html')
+@app.route('/actualizarP',methods=['GET','POST'])
+def actualizarP():
+    return render_template('ActualizarProovedor.html')
 
-@app.route('/buscarMedico',methods=['GET','POST'])
-def buscarMedico():
-    return render_template('Buscar médico.html')
+#Buscar
+@app.route('/buscarR',methods=['GET','POST'])
+def buscarR():
+    return render_template('BuscarRequisicion.html')
 
-@app.route('/consultarCitas',methods=['GET','POST'])
-def consultarCitas():
-    return render_template('Consultar citas.html')
+@app.route('/buscarC',methods=['GET','POST'])
+def buscarC():
+    return render_template('BuscarCotizacion.html')
 
-@app.route('/consultaMedico',methods=['GET','POST'])
-def consultaMedico():
-    return render_template('Consultar médico.html')
+@app.route('/buscarP',methods=['GET','POST'])
+def buscarP():
+    return render_template('BuscarProveedor.html')
 
-@app.route('/consultarPaciente',methods=['GET','POST'])
-def consultarPaciente():
-    return render_template('Consultar paciente.html')
+#Consultar
+@app.route('/consultarR',methods=['GET','POST'])
+def consultarR():
+    return render_template('ConsultarRequisicion.html')
 
-@app.route('/descargarReceta',methods=['GET','POST'])
-def descargarReceta():
-    return render_template('Descargar receta.html')
-@app.route('/diagPaciente',methods=['GET','POST'])
-def diagPaciente():
-    return render_template('Diagnóstico paciente.html')
+@app.route('/consultarC',methods=['GET','POST'])
+def consultaC():
+    return render_template('ConsultarCotizacion.html')
 
-@app.route('/eliminarRequisicion', methods=['GET','POST'])
-def eliminarRequisicion():
+@app.route('/consultarP',methods=['GET','POST'])
+def consultarP():
+    return render_template('ConsultarProveedor.html')
+
+#Eliminar
+@app.route('/eliminarR', methods=['GET','POST'])
+def eliminarR():
     return render_template('EliminarRequisicion.html')
 
-@app.route('/exPaciente',methods=['GET','POST'])
-def exPaciente():
-    return render_template('Exploración paciente.html')
+@app.route('/eliminarC', methods=['GET','POST'])
+def eliminarC():
+    return render_template('EliminarCotizacion.html')
+
+@app.route('/eliminarP', methods=['GET','POST'])
+def eliminarP():
+    return render_template('EliminarProveedor.html')
+
 #Ejecucion del servidor
 if __name__=='__main__':
     app.run(port=5000,debug=True) #Procurar que sea un puerto desocupado, debug(prendido)
