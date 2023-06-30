@@ -102,7 +102,7 @@ def actualizarC():
 
 @app.route('/actualizarP',methods=['GET','POST'])
 def actualizarP():
-    return render_template('ActualizarProovedor.html')
+    return render_template('ActualizarProveedor.html')
 
 #Buscar
 @app.route('/buscarR',methods=['GET','POST'])
