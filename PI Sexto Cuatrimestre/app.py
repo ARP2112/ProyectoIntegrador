@@ -7,7 +7,7 @@ app=Flask(__name__) #Inicializacion del servidor Flask
 app.config['MYSQL_HOST']="localhost" #Especificar en que servidor trabajamos
 app.config['MYSQL_USER']="root" #Especificar usuario
 app.config['MYSQL_PASSWORD']="" #Especificar contraseña
-app.config['MYSQL_DB']="ProyectoIntegrador2(2)" #Especificar a que base de datos
+app.config['MYSQL_DB']="proyectointegrador" #Especificar a que base de datos
 
 app.secret_key='mysecretkey' #Permite hacer envios a traves de post
 
@@ -40,12 +40,12 @@ def proveedores():
 @app.route('/registrarR',methods=['GET','POST'])
 def registrarR():
     if request.method=='POST': #Peticiones del usuario a traves del metodo POST
-        Nfecha=request.form['fecha']
-        Nnumad=request.form['numeroadquisicion']
-        Ncant=request.form['cantidad']
-        Npart=request.form['partida']
-        Ndescrip=request.form['descripcion']
-        Nas=request.form['areasolicitante']
+        Nfecha=request.form['Fecha']
+        Nnumad=request.form['requisicion']
+        Ncant=request.form['Cantidad']
+        Npart=request.form['Partida']
+        Ndescrip=request.form['Descripcion']
+        Nas=request.form['Area_solicitante']
         
         CS=mysql.connection.cursor()
         CS.execute('insert into requisicion(fecha,numeroadquisicion,cantidad,partida,descripcion,areasolicitante) values(%s,%s,%s,%s,%s,%s)',
@@ -58,15 +58,15 @@ def registrarR():
 @app.route('/registrarC',methods=['GET','POST'])
 def registrarC():
     if request.method=='POST': #Peticiones del usuario a traves del metodo POST
-        Nval=request.form['validar']
-        Nnumcot=request.form['numerocotizacion']
-        Nfechac=request.form['fecha']
-        Nem=request.form['empresa']
-        Nrfc=request.form['rfc']
-        Nidd=request.form['id_domicilio']
+        Nval=request.form['Validar']
+        Nnumcot=request.form['Numero cotizacion']
+        Nfechac=request.form['Fecha']
+        Nem=request.form['Empresa']
+        Nrfc=request.form['RFC']
+        Nidd=request.form['Domicilio']
       
         CS=mysql.connection.cursor()
-        CS.execute('insert into cotizacion(validar,numerocotizacion,fecha,empresa,rfc,id_domicilio) values(%s,%s,%s,%s,%s,%s)',
+        CS.execute('insert into cotizacion(validar,numerocotizacion,fecha,empresa,rfc,domicilio) values(%s,%s,%s,%s,%s,%s)',
                    (Nval,Nnumcot,Nfechac,Nem,Nrfc,Nidd)) #Para ejecutar codigo sql, y pasamos parametros
         mysql.connection.commit()
 
@@ -76,15 +76,15 @@ def registrarC():
 @app.route('/registrarP',methods=['GET','POST'])
 def registrarP():
     if request.method=='POST': #Peticiones del usuario a traves del metodo POST
-        Nnombre=request.form['nombre']
-        Nap=request.form['ap']
-        Nam=request.form['am']
-        Nrfcp=request.form['rfc']
-        Nempp=request.form['empresa']
-        Niddp=request.form['id_domicilio']
+        Nnombre=request.form['RFC']
+        Nap=request.form['Apellido Paterno']
+        Nam=request.form['Apellido Materno']
+        Nrfcp=request.form['RFC']
+        Nempp=request.form['Empresa']
+        Niddp=request.form['Domicilio']
         
         CS=mysql.connection.cursor()
-        CS.execute('insert into proveedores(nombre,ap,am,rfc,empresa,id_domicilio) values(%s,%s,%s,%s,%s,%s)',
+        CS.execute('insert into proveedores(nombre,ap,am,rfc,empresa,domicilio) values(%s,%s,%s,%s,%s,%s)',
                    (Nnombre,Nap,Nam,Nrfcp,Nempp,Niddp)) #Para ejecutar codigo sql, y pasamos parametros
         mysql.connection.commit()
 
