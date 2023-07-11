@@ -24,6 +24,7 @@
   
     <ul>
           <table>
+            <thead>
             <tr>
                 <th><label1>Nombre</label1></th>
                 <th><label1>Apellido Paterno</label1></th>
@@ -33,8 +34,9 @@
                 <th><label1>Domicilio</label1></th>
             
             </tr>
+            </thead>
             <tr>
-                <td>-</td>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -42,12 +44,24 @@
                 <td></td>
                 <td></td>
             </tr>
+            <tbody>
+              {%for alb in tbprov %}
+              <tr>
+                  <td>{{ alb.0 }}</td>
+                  <td>{{ alb.1 }}</td>
+                  <td>{{ alb.2 }}</td>
+                  <td>{{ alb.3 }}</td>
+                  <td>{{ alb.4 }}</td>
+                  <td>{{ alb.5 }}</td>
+              </tr>
+              {%endfor %}
+          </tbody>
         </table>
         
         </form>
   
           <p></p>
-          <a class="button1">BUSCAR</a>
+          <button type="submit">BUSCAR</button>
         </div>
         </ul>
     </form>

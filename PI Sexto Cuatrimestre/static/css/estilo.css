@@ -27,7 +27,7 @@ body {
   }
 
   label1 {
-    color: #ffffff;
+    color: #6797f0;
     display: block;
     margin-bottom: 10px;
   }
@@ -63,7 +63,7 @@ body {
     text-align: center;
   }
 
-  label1 {
+  .label1 {
     display: block;
     margin-bottom: 20px;
   }
@@ -144,7 +144,7 @@ body {
   th, td {
     padding: 8px;
     text-align: center;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #6797f0;
   }
 
   th {

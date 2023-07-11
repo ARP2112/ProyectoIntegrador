@@ -76,7 +76,7 @@ def registrarC():
 @app.route('/registrarP',methods=['GET','POST'])
 def registrarP():
     if request.method=='POST': #Peticiones del usuario a traves del metodo POST
-        Nnombre=request.form['RFC']
+        Nnombre=request.form['Nombre']
         Nap=request.form['Apellido Paterno']
         Nam=request.form['Apellido Materno']
         Nrfcp=request.form['RFC']
@@ -120,15 +120,26 @@ def buscarP():
 #Consultar
 @app.route('/consultarR',methods=['GET','POST'])
 def consultarR():
-    return render_template('ConsultarRequisicion.html')
+    curSelect=mysql.connection.cursor()
+    curSelect.execute('select * from requisicion')
+    consulta=curSelect.fetchall() #Para traer varios registros
+    #print(consulta)
+    return render_template('ConsultarRequisicion.html', tbrequisicion=consulta)#Nos sirve para concatenar las consultas y abrir rutas
 
 @app.route('/consultarC',methods=['GET','POST'])
 def consultaC():
-    return render_template('ConsultarCotizacion.html')
+    curSelect=mysql.connection.cursor()
+    curSelect.execute('select * from cotizacion')
+    consulta=curSelect.fetchall() #Para traer varios registros
+    return render_template('ConsultarCotizacion.html', tbcoti=consulta)
 
 @app.route('/consultarP',methods=['GET','POST'])
 def consultarP():
-    return render_template('ConsultarProveedor.html')
+    curSelect=mysql.connection.cursor()
+    curSelect.execute('select * from proveedores')
+    consulta=curSelect.fetchall() #Para traer varios registros
+    #print(consulta)
+    return render_template('ConsultarProveedor.html', tbprov=consulta)
 
 #Eliminar
 @app.route('/eliminarR', methods=['GET','POST'])
