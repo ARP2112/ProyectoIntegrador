@@ -218,18 +218,59 @@ def consultarP():
     return render_template('ConsultarProveedor.html', tbprov=consulta)
 
 #Eliminar
-@app.route('/eliminarR', methods=['GET','POST'])
-def eliminarR():
-    return render_template('EliminarRequisicion.html')
+@app.route('/eliminarR/<id>', methods=['GET','POST'])
+def eliminarR(id):
+    curDelete=mysql.connection.cursor()
+    curDelete.execute('delete from requisicion where id_requisicion=%s', (id)) 
+    mysql.connection.commit() #Para actualizar
 
-@app.route('/eliminarC', methods=['GET','POST'])
-def eliminarC():
-    return render_template('EliminarCotizacion.html')
+    flash('Requisicion eliminada correctamente')
+    return redirect(url_for('index'))
 
-@app.route('/eliminarP', methods=['GET','POST'])
-def eliminarP():
-    return render_template('EliminarProveedor.html')
+@app.route('/eliminarC/<id>', methods=['GET','POST'])
+def eliminarC(id):
+    curDelete=mysql.connection.cursor()
+    curDelete.execute('delete from cotizacion where id_cotizacion=%s', (id)) 
+    mysql.connection.commit() #Para actualizar
+
+    flash('Cotizacion eliminada correctamente')
+    return redirect(url_for('index'))
+
+@app.route('/eliminarP/<id>', methods=['GET','POST'])
+def eliminarP(id):
+    curDelete=mysql.connection.cursor()
+    curDelete.execute('delete from proveedores where id_proveedores=%s', (id)) 
+    mysql.connection.commit() #Para actualizar
+
+    flash('Proveedor eliminada correctamente')
+    return redirect(url_for('index'))
+
+#Borrar para eliminar
+
+@app.route('/borrarR/<id>')
+def borrarR(id):
+    curBorrar=mysql.connection.cursor()
+    curBorrar.execute('select * from requisicion where id_requisicion= %s', (id,))#Coma importante por que lo confunde con una tupla
+    consultaID=curBorrar.fetchone() #Para traer unicamente un registro
+
+    return render_template('EliminarRequisicion.html', brequi=consultaID)
+
+@app.route('/borrarC/<id>')
+def borrarC(id):
+    curBorrar=mysql.connection.cursor()
+    curBorrar.execute('select * from cotizacion where id_cotizacion= %s', (id,))#Coma importante por que lo confunde con una tupla
+    consultaID=curBorrar.fetchone() #Para traer unicamente un registro
+
+    return render_template('EliminarCotizacion.html', bcoti=consultaID)
+
+@app.route('/borrarP/<id>')
+def borrarP(id):
+    curBorrar=mysql.connection.cursor()
+    curBorrar.execute('select * from proveedores where id_proveedores= %s', (id,))#Coma importante por que lo confunde con una tupla
+    consultaID=curBorrar.fetchone() #Para traer unicamente un registro
+
+    return render_template('EliminarProveedor.html', bprov=consultaID)
 
 #Ejecucion del servidor
 if __name__=='__main__':
-    app.run(port=5000,debug=True) #Procurar que sea un puerto desocupado, debug(prendido)
+    app.run(port=5005,debug=True) #Procurar que sea un puerto desocupado, debug(prendido)

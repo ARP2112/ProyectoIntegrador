@@ -18,15 +18,15 @@
 
 <body class=bodyint>
    <div class="divform">
-<form action="/eliminarR" method="POST">
+<form action="/eliminarR/{{ brequi.0 }}" method="POST">
     <ul>
         
         <label for="IdentidicadorRequicicion">Identificador de Requisicion:</label>
         <p></p>
-        <input type="text" name="Identificadorrequisicion"/>
+        <input type="text" name="Identificadorrequisicion", value="{{ brequi.0 }}"/>
       
       <p></p>
-      <a class="button1">ELIMINAR</a>
+      <button type="submit">ELIMINAR</button>
 
       <p></p>
       <p></p>

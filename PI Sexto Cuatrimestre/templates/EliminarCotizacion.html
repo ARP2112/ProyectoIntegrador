@@ -18,15 +18,15 @@
 
 <body class=bodyint>
    <div class="divform">
-<form action="/eliminarC" method="POST">
+<form action="/eliminarC/{{ bcoti.0 }}" method="POST">
     <ul>
         
         <label for="IdentidicadorCotizacion">Identificador de Cotizacion:</label>
         <p></p>
-        <input type="text" name="IdentificadorCotizacion"/>
+        <input type="text" name="IdentificadorCotizacion", value="{{ bcoti.0 }}"/>
       
       <p></p>
-      <a class="button1">ELIMINAR</a>
+      <button type="submit">ELIMINAR</button>
 
       <p></p>
       <p></p>
