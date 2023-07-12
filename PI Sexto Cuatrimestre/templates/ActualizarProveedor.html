@@ -16,48 +16,43 @@
   <h1> ACTUALIZAR PROVEEDOR</h1>
 
 <body>
-<form action="/actualizarP" method="POST">
+<form action="/actualizarP/{{ edprov.0 }}" method="POST">
     <ul>
       
         <label for="Nombre">Nombre:</label>
-        <input type="text" name="Nombre"/>
+        <input type="text" name="Nombre", value="{{ edprov.1 }}"/>
       
       <p></p>
       
         <label for="Apellido Paterno">Apellido Paterno:</label>
-        <input type="text" name="Apellido Paterno"/>
+        <input type="text" name="Apellido Paterno", value="{{ edprov.2 }}"/>
      
       <p></p>
       
         <label for="Apellido Materno">Apellido Materno:</label>
-        <input type="text" name="Apellido Materno"/>
+        <input type="text" name="Apellido Materno", value="{{ edprov.3 }}"/>
       
       <p></p>
       
         <label for="RFC">RFC:</label>
-        <input type="text" name="RFC"/>
+        <input type="text" name="RFC", value="{{ edprov.4 }}"/>
       
       <p></p>
       
         <label for="Empresa">Empresa:</label>
-        <input type="text" name="Empresa"/>
+        <input type="text" name="Empresa", value="{{ edprov.5 }}"/>
       
-      <p></p>
-     
-        <label for="RFC">RFC:</label>
-        <input type="text" name="RFC"/>
-     
       <p></p>
 
       <label for="Domicilio">Domicilio:</label>
-      <input type="text" name="Domicilio"/>
+      <input type="text" name="Domicilio", value="{{ edprov.6 }}"/>
    
       <p></p>
     
       <p></p>
       <p></p>
       <p></p>
-        <a class="button1">ACTUALIZAR PROVEEEDOR</a>
+        <button type="submit">ACTUALIZAR PROVEEEDOR</button>
         <a class="button1">CANCELAR</a>
            
       

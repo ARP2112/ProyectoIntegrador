@@ -19,55 +19,53 @@
 
 <body>
    <div>
-<form action="/actualizarR" method="POST">
+<form action="/actualizarR/{{ edrequi.0 }}" method="POST">
     <ul>
       
-        <label for="ID Requicicion">ID Requisicion:</label>
-        <input type="text" name="IDrequisicion"/>
     
       <p></p>
 
         <label for="Requicicion">Requisicion:</label>
-        <input type="text" name="requisicion"/>
+        <input type="text" name="requisicion", value="{{ edrequi.1 }}"/>
       
       <p></p>
-      <a class="button1">ACTUALIZAR NUMERO REQUISICION</a>
+      <button type="submit">ACTUALIZAR NUMERO REQUISICION</button>
       
       <p></p>
         <label for="Fecha">Fecha:</label>
-        <input type="date" class="my-date-input">
+        <input type="date" name="Fecha" class="my-date-input", value="{{ edrequi.2 }}">
         
      
       <p></p>
-      <a class="button1">ACTUALIZAR FECHA</a>
+      <button type="submit">ACTUALIZAR FECHA</button>
       
       <p></p>
         <label for="Partida">Partida:</label>
-        <input type="text" name="Partida"/>
+        <input type="text" name="Partida", value="{{ edrequi.3 }}"/>
       
       <p></p>
-      <a class="button1">ACTUALIZAR PARTIDA</a>
+      <button type="submit">ACTUALIZAR PARTIDA</button>
       
       <p></p>
         <label for="Cantidad">Cantidad:</label>
-        <input type="text" name="Cantidad"/>
+        <input type="text" name="Cantidad", value="{{ edrequi.4 }}"/>
       
       <p></p>
-      <a class="button1">ACTUALIZAR CANTIDAD</a>
+      <button type="submit"> CANTIDAD</button>
       
       <p></p>
         <label for="Descripcion">Descripcion:</label>
-        <input type="text" name="Descripcion"/>
+        <input type="text" name="Descripcion", value="{{ edrequi.5 }}"/>
       
       <p></p>
-      <a class="button1">ACTUALIZAR DESCRIPCION</a>
+      <button>ACTUALIZAR DESCRIPCION</button>
       
       <p></p>
         <label for="Area_solicitante">Área del solicitante:</label>
-        <input type="text" name="Area_solicitante"/>
+        <input type="text" name="Area_solicitante", value="{{ edrequi.6 }}"/>
      
       <p></p>
-      <a class="button1" type="submit">ACTUALIZAR AREA SOLICITANTE</a>
+      <button type="submit">ACTUALIZAR AREA SOLICITANTE</button>
 
       <p></p>
       

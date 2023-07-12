@@ -16,48 +16,45 @@
   <h1> ACTUALIZAR COTIZACION</h1>
 
 <body>
-<form action="/actualizarC" method="POST">
+<form action="/actualizarC/{{ edcoti.0 }}" method="POST">
     <ul>
-      
-        <label for="Cotizacion">Cotizacion:</label>
-        <input type="text" name="Cotizacion"/>
-      
+
       <p></p>
       
         <label for="Validar">Validar</label>
-        <input type="text" name="Validar"/>
+        <input type="text" name="Validar", value="{{ edcoti.1 }}"/>
      
       <p></p>
       
         <label for="Numero cotizacion">Numero cotizacion</label>
-        <input type="text" name="Numero cotizacion"/>
+        <input type="text" name="Numero cotizacion", value="{{ edcoti.2 }}"/>
       
       <p></p>
       
         <label for="Fecha">Fecha:</label>
-        <input type="text" name="Fecha"/>
+        <input type="text" name="Fecha", value="{{ edcoti.3 }}"/>
       
       <p></p>
       
         <label for="Empresa">Empresa:</label>
-        <input type="text" name="Empresa"/>
+        <input type="text" name="Empresa", value="{{ edcoti.4 }}"/>
       
       <p></p>
      
         <label for="RFC">RFC:</label>
-        <input type="text" name="RFC"/>
+        <input type="text" name="RFC", value="{{ edcoti.5 }}"/>
      
       <p></p>
 
       <label for="Domicilio">Domicilio:</label>
-      <input type="text" name="Domicilio"/>
+      <input type="text" name="Domicilio", value="{{ edcoti.6 }}"/>
    
       <p></p>
     
       <p></p>
       <p></p>
       <p></p>
-        <a class="button1">GUARDAR COTIZACION</a>
+        <button type="submit">ACTUALIZAR COTIZACION</button>
         <a class="button1">CANCELAR</a>
            
       

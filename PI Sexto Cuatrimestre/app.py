@@ -92,30 +92,106 @@ def registrarP():
     return render_template('RegistrarProveedor.html')
 
 #Actualizar
-@app.route('/actualizarR',methods=['GET','POST'])
-def actualizarR():
-    return render_template('ActualizarRequisicion.html')
+@app.route('/actualizarR/<id>',methods=['GET','POST'])
+def actualizarR(id):
+    if request.method=='POST': #Peticiones del usuario a traves del metodo POST
+        Nfecha=request.form['Fecha']
+        Nnumad=request.form['requisicion']
+        Ncant=request.form['Cantidad']
+        Npart=request.form['Partida']
+        Ndescrip=request.form['Descripcion']
+        Nas=request.form['Area_solicitante']
+        
+        CS=mysql.connection.cursor()
+        CS.execute('update requisicion set fecha=%s,numeroadquisicion=%s,cantidad=%s,partida=%s,descripcion=%s,areasolicitante=%s where id_requisicion=%s',
+                   (Nfecha,Nnumad,Ncant,Npart,Ndescrip,Nas,id)) #Para ejecutar codigo sql, y pasamos parametros
+        mysql.connection.commit()
 
-@app.route('/actualizarC',methods=['GET','POST'])
-def actualizarC():
-    return render_template('ActualizarCotizacion.html')
+    flash('Requisicion registrada')
+    return redirect(url_for('index')) #Reedireccionamiento a la vista index
 
-@app.route('/actualizarP',methods=['GET','POST'])
-def actualizarP():
-    return render_template('ActualizarProveedor.html')
+@app.route('/actualizarC/<id>',methods=['GET','POST'])
+def actualizarC(id):
+    if request.method=='POST': #Peticiones del usuario a traves del metodo POST
+        Nval=request.form['Validar']
+        Nnumcot=request.form['Numero cotizacion']
+        Nfechac=request.form['Fecha']
+        Nem=request.form['Empresa']
+        Nrfc=request.form['RFC']
+        Nidd=request.form['Domicilio']
+      
+        CS=mysql.connection.cursor()
+        CS.execute('update cotizacion set validar=%s,numerocotizacion=%s,fecha=%s,empresa=%s,rfc=%s,domicilio=%s where id_cotizacion=%s',
+                   (Nval,Nnumcot,Nfechac,Nem,Nrfc,Nidd,id)) #Para ejecutar codigo sql, y pasamos parametros
+        mysql.connection.commit()
+
+    flash('Cotizacion registrada')
+    return redirect(url_for('index'))
+
+@app.route('/actualizarP/<id>',methods=['GET','POST'])
+def actualizarP(id):
+    if request.method=='POST': #Peticiones del usuario a traves del metodo POST
+        Nnombre=request.form['Nombre']
+        Nap=request.form['Apellido Paterno']
+        Nam=request.form['Apellido Materno']
+        Nrfcp=request.form['RFC']
+        Nempp=request.form['Empresa']
+        Niddp=request.form['Domicilio']
+        
+        CS=mysql.connection.cursor()
+        CS.execute('update proveedores set nombre=%s,ap=%s,am=%s,rfc=%s,empresa=%s,domicilio=%s where id_proveedores=%s',
+                   (Nnombre,Nap,Nam,Nrfcp,Nempp,Niddp,id)) #Para ejecutar codigo sql, y pasamos parametros
+        mysql.connection.commit()
+
+    flash('Proveedor registrado')
+    return redirect(url_for('index'))
+
+#Editar pase de parametros --- ACTUALIZAR
+@app.route('/editarR/<id>')
+def editarR(id):
+    curEditar=mysql.connection.cursor()
+    curEditar.execute('select * from requisicion where id_requisicion= %s', (id,))#Coma importante por que lo confunde con una tupla
+    consultaID=curEditar.fetchone() #Para traer unicamente un registro
+
+    return render_template('ActualizarRequisicion.html', edrequi=consultaID)
+
+@app.route('/editarC/<id>')
+def editarC(id):
+    curEditar=mysql.connection.cursor()
+    curEditar.execute('select * from cotizacion where id_cotizacion= %s', (id,))#Coma importante por que lo confunde con una tupla
+    consultaID=curEditar.fetchone() #Para traer unicamente un registro
+
+    return render_template('ActualizarCotizacion.html', edcoti=consultaID)
+
+@app.route('/editarP/<id>')
+def editarP(id):
+    curEditar=mysql.connection.cursor()
+    curEditar.execute('select * from proveedores where id_proveedores= %s', (id,))#Coma importante por que lo confunde con una tupla
+    consultaID=curEditar.fetchone() #Para traer unicamente un registro
+
+    return render_template('ActualizarProveedor.html', edprov=consultaID)
 
 #Buscar
-@app.route('/buscarR',methods=['GET','POST'])
+@app.route('/buscarR/<id>',methods=['GET','POST'])
 def buscarR():
-    return render_template('BuscarRequisicion.html')
+    curSelect=mysql.connection.cursor()
+    curSelect.execute('select * from requisicion where id=%s', (id,))
+    consulta=curSelect.fetchone() #Para traer solo un registro
+    return render_template('BuscarRequisicion.html', busrequisicion=consulta)
 
-@app.route('/buscarC',methods=['GET','POST'])
+@app.route('/buscarC/<id>',methods=['GET','POST'])
 def buscarC():
-    return render_template('BuscarCotizacion.html')
+    curSelect=mysql.connection.cursor()
+    curSelect.execute('select * from cotizacion where id=%s', (id,))
+    consulta=curSelect.fetchone() #Para traer solo un registro
+    return render_template('BuscarCotizacion.html', buscoti=consulta)
 
-@app.route('/buscarP',methods=['GET','POST'])
+@app.route('/buscarP/<id>',methods=['GET','POST'])
 def buscarP():
-    return render_template('BuscarProveedor.html')
+    curSelect=mysql.connection.cursor()
+    curSelect.execute('select * from proveedores where id=%s', (id,))
+    consulta=curSelect.fetchone() #Para traer solo un registro
+    return render_template('BuscarProveedor.html', busprov=consulta)
 
 #Consultar
 @app.route('/consultarR',methods=['GET','POST'])
