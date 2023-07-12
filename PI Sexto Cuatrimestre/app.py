@@ -171,13 +171,22 @@ def editarP(id):
 
     return render_template('ActualizarProveedor.html', edprov=consultaID)
 
-#Buscar
-@app.route('/buscarR/<id>',methods=['GET','POST'])
-def buscarR():
+#Busq para vistas
+
+@app.route('/busqR/<id>' ,methods=['GET','POST'] )
+def busqR(id):
     curSelect=mysql.connection.cursor()
-    curSelect.execute('select * from requisicion where id=%s', (id,))
+    curSelect.execute('select * from requisicion where id_requisicion=%s', (id,))
     consulta=curSelect.fetchone() #Para traer solo un registro
-    return render_template('BuscarRequisicion.html', busrequisicion=consulta)
+    return render_template('BuscarRequisicion.html', busrequi=consulta)
+
+#Buscar
+@app.route('/buscarR',methods=['GET','POST'])
+def buscarR():
+    '''curSelect=mysql.connection.cursor()
+    curSelect.execute('select * from requisicion where id=%s', (id,))
+    consulta=curSelect.fetchone() #Para traer solo un registro'''
+    return render_template('BuscarRequisicion.html')
 
 @app.route('/buscarC/<id>',methods=['GET','POST'])
 def buscarC():

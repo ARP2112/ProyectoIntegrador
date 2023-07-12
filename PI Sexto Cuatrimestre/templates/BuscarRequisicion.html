@@ -15,19 +15,19 @@
   <h1> BUSCAR REQUISICION </h1>
 
 <body>
-<form action="/buscarR" method="POST">
+<form action="/buscarR/" method="POST">
     <ul>
-      
         <label for="Requicicion">ID de Requisicion:</label>
         <input type="text" name="IDrequisicion"/>
-      
+      </form>
       <p></p>
       
-      <a class="button1">BUSCAR</a>
+      <button type="submit">BUSCAR</button>
 
       <h2> REGISTRADO </h2>
 
       <table>
+      <thead>
         <tr>
             <th><label1>ID</label1></th>
             <th><label1>Requisicion</label1></th>
@@ -38,8 +38,9 @@
             <th><label1>Área solicitante</label1></th>
         
         </tr>
+        </thead>
         <tr>
-            <td>-</td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
@@ -47,6 +48,19 @@
             <td></td>
             <td></td>
         </tr>
+        <tbody>
+          {%for alb in busrequi %}
+          <tr>
+              <td>{{ alb.0 }}</td>
+              <td>{{ alb.1 }}</td>
+              <td>{{ alb.2 }}</td>
+              <td>{{ alb.3 }}</td>
+              <td>{{ alb.4 }}</td>
+              <td>{{ alb.5 }}</td>
+              <td>{{ alb.6 }}</td>
+          </tr>
+          {%endfor %}
+      </tbody>
     </table>
 
       <p></p>

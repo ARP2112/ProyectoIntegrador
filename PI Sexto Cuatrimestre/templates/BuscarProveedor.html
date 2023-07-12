@@ -15,7 +15,7 @@
   <h1> BUSCAR PROVEEDOR </h1>
 
 <body>
-<form action="/buscarP" method="POST">
+<form action="/busqP/{{ busprov.0 }}" method="POST">
     <ul>
       
         <label for="Proveedor">ID de Proveedor:</label>
@@ -28,6 +28,7 @@
       <h2> REGISTRADO </h2>
 
       <table>
+        <thead>
         <tr>
             <th><label1>Nombre</label1></th>
             <th><label1>Apellido Paterno</label1></th>
@@ -37,6 +38,7 @@
             <th><label1>Domicilio</label1></th>
         
         </tr>
+      </thead>
         <tr>
             <td>-</td>
             <td></td>
@@ -46,6 +48,18 @@
             <td></td>
             <td></td>
         </tr>
+        <tbody>
+          {%for alb in busprov %}
+          <tr>
+              <td>{{ alb.0 }}</td>
+              <td>{{ alb.1 }}</td>
+              <td>{{ alb.2 }}</td>
+              <td>{{ alb.3 }}</td>
+              <td>{{ alb.4 }}</td>
+              <td>{{ alb.5 }}</td>
+          </tr>
+          {%endfor %}
+      </tbody>
     </table>
 
       <p></p>
