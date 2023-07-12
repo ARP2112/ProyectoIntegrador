@@ -177,8 +177,9 @@ def editarP(id):
 def busqR(id):
     curSelect=mysql.connection.cursor()
     curSelect.execute('select * from requisicion where id_requisicion=%s', (id,))
-    consulta=curSelect.fetchone() #Para traer solo un registro
-    return render_template('BuscarRequisicion.html', busrequi=consulta)
+    consultaRe=curSelect.fetchone() #Para traer solo un registro
+    
+    return render_template('BuscarRequisicion.html', busrequi=consultaRe)
 
 #Buscar
 @app.route('/buscarR',methods=['GET','POST'])
