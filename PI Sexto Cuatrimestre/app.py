@@ -107,7 +107,7 @@ def actualizarR(id):
                    (Nfecha,Nnumad,Ncant,Npart,Ndescrip,Nas,id)) #Para ejecutar codigo sql, y pasamos parametros
         mysql.connection.commit()
 
-    flash('Requisicion registrada')
+    flash('Requisicion actualizada')
     return redirect(url_for('index')) #Reedireccionamiento a la vista index
 
 @app.route('/actualizarC/<id>',methods=['GET','POST'])
@@ -125,7 +125,7 @@ def actualizarC(id):
                    (Nval,Nnumcot,Nfechac,Nem,Nrfc,Nidd,id)) #Para ejecutar codigo sql, y pasamos parametros
         mysql.connection.commit()
 
-    flash('Cotizacion registrada')
+    flash('Cotizacion actualizada')
     return redirect(url_for('index'))
 
 @app.route('/actualizarP/<id>',methods=['GET','POST'])
@@ -143,7 +143,7 @@ def actualizarP(id):
                    (Nnombre,Nap,Nam,Nrfcp,Nempp,Niddp,id)) #Para ejecutar codigo sql, y pasamos parametros
         mysql.connection.commit()
 
-    flash('Proveedor registrado')
+    flash('Proveedor actualizado')
     return redirect(url_for('index'))
 
 #Editar pase de parametros --- ACTUALIZAR
