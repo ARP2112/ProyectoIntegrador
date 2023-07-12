@@ -22,31 +22,30 @@
 <form action="/actualizarR/{{ edrequi.0 }}" method="POST">
     <ul>
       
-    
-      <p></p>
-
-        <label for="Requicicion">Requisicion:</label>
-        <input type="text" name="requisicion", value="{{ edrequi.1 }}" required/>
-      
       <p></p>
       
       <p></p>
         <label for="Fecha">Fecha:</label>
-        <input type="date" name="Fecha" class="my-date-input", value="{{ edrequi.2 }}" required>
+        <input type="date" name="Fecha" class="my-date-input", value="{{ edrequi.1 }}" required>
         
      
       <p></p>
+
+      
+      <label for="Requicicion">Requisicion:</label>
+      <input type="text" name="requisicion", value="{{ edrequi.2 }}" required/>
+    
       
       <p></p>
+
+      <label for="Cantidad">Cantidad:</label>
+      <input type="text" name="Cantidad", value="{{ edrequi.3 }}" required/>
+      <p></p>
+
         <label for="Partida">Partida:</label>
-        <input type="text" name="Partida", value="{{ edrequi.3 }}" required/>
+        <input type="text" name="Partida", value="{{ edrequi.4 }}" required/>
       
       <p></p>
-      
-      <p></p>
-        <label for="Cantidad">Cantidad:</label>
-        <input type="text" name="Cantidad", value="{{ edrequi.4 }}" required/>
-      
       <p></p>
       
       <p></p>
