@@ -177,15 +177,20 @@ def editarP(id):
 def busqR(id):
     curSelect=mysql.connection.cursor()
     curSelect.execute('select * from requisicion where id_requisicion=%s', (id,))
+<<<<<<< Updated upstream
     consultaRe=curSelect.fetchone() #Para traer solo un registro
     
     return render_template('BuscarRequisicion.html', busrequi=consultaRe)
+=======
+    consulta=curSelect.fetchall() #Para traer solo un registro
+    return render_template('BuscarRequisicion.html', busrequi=consulta)
+>>>>>>> Stashed changes
 
 #Buscar
 @app.route('/buscarR',methods=['GET','POST'])
 def buscarR():
     '''curSelect=mysql.connection.cursor()
-    curSelect.execute('select * from requisicion where id=%s', (id,))
+    curSelect.execute('select * from requisicion where id_requisicion=%s', (id,))
     consulta=curSelect.fetchone() #Para traer solo un registro'''
     return render_template('BuscarRequisicion.html')
 
