@@ -40,6 +40,10 @@ def cotizaciones():
 def proveedores():
     return render_template('RegistrarProveedor.html')
 
+@app.route('/ordenCompra')
+def ordenCompra():
+    return render_template('RegistrarOrdenCompra.html')
+
 #Registrar
 @app.route('/registrarR',methods=['GET','POST'])
 def registrarR():
@@ -94,6 +98,10 @@ def registrarP():
 
     flash('Proveedor registrado')
     return render_template('RegistrarProveedor.html')
+
+@app.route('/registrarO',methods=['GET','POST'])
+def registrarO():
+    return render_template('RegistrarOrdenCompra.html')
 
 #Actualizar
 @app.route('/actualizarR/<id>',methods=['GET','POST'])
@@ -181,14 +189,9 @@ def editarP(id):
 def busqR(id):
     curSelect=mysql.connection.cursor()
     curSelect.execute('select * from requisicion where id_requisicion=%s', (id,))
-<<<<<<< Updated upstream
     consultaRe=curSelect.fetchone() #Para traer solo un registro
     
     return render_template('BuscarRequisicion.html', busrequi=consultaRe)
-=======
-    consulta=curSelect.fetchall() #Para traer solo un registro
-    return render_template('BuscarRequisicion.html', busrequi=consulta)
->>>>>>> Stashed changes
 
 #Buscar
 @app.route('/buscarR',methods=['GET','POST'])
@@ -211,6 +214,10 @@ def buscarP():
     curSelect.execute('select * from proveedores where id=%s', (id,))
     consulta=curSelect.fetchone() #Para traer solo un registro
     return render_template('BuscarProveedor.html', busprov=consulta)
+
+@app.route('/buscarO',methods=['GET','POST'])
+def buscarO():
+    return render_template('BuscarOrdenCompra.html')
 
 #Consultar
 @app.route('/consultarR',methods=['GET','POST'])
@@ -235,6 +242,10 @@ def consultarP():
     consulta=curSelect.fetchall() #Para traer varios registros
     #print(consulta)
     return render_template('ConsultarProveedor.html', tbprov=consulta)
+
+@app.route('/consultarO',methods=['GET','POST'])
+def consultarO():
+    return render_template('ConsultarOrdenCompra.html')
 
 #Eliminar
 @app.route('/eliminarR/<id>', methods=['GET','POST'])
@@ -262,6 +273,10 @@ def eliminarP(id):
     mysql.connection.commit() #Para actualizar
 
     flash('Proveedor eliminada correctamente')
+    return redirect(url_for('index'))
+
+@app.route('/eliminarO', methods=['GET','POST'])
+def eliminarO():
     return redirect(url_for('index'))
 
 #Borrar para eliminar

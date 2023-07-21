@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <title> Eliminar Orden de Compra </title>
+   
+<header class="header01">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
+
+    <a href="registrarO" class="button2">REGISTRAR ORDEN DE COMPRA</a>
+    <a href="buscarO" class="button2">BUSCAR ORDEN DE COMPRA</a>
+    <a href="consultarO" class="button2">CONSULTAR ORDEN DE COMPRA</a>
+    <a href="actualizarO" class="button2">ACTUALIZAR ORDEN DE COMPRA</a>
+
+  <h1> ELIMINAR ORDEN DE COMPRA </h1>
+
+
+<body class=bodyint>
+   <div class="divform">
+<form action="/eliminarO" method="POST">
+    <ul>
+        
+        <label for="IdentidicadorProveedor">Identificador de Proveedor:</label>
+        <p></p>
+        <input type="text" name="IdentificadorProveedor" required/>
+      
+      <p></p>
+      <button type="submit">ELIMINAR</button>
+
+      <p></p>
+      <p></p>
+      <p></p>
+      
+    </ul>
+  </form>
+</body>

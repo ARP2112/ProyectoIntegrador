@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <title> Buscar ORDEN DE COMPRA </title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
+  <div class="containerM">
+
+  <a href="registrarP" class="button2">REGISTRAR ORDEN DE COMPRA</a>
+  <a href="actualizarP" class="button2">ACTUALIZAR ORDEN DE COMPRA</a>
+  <a href="consultarP" class="button2">CONSULTAR ORDEN DE COMPRA</a>
+  <a href="eliminarP" class="button2">ELIMINAR ORDEN DE COMPRA</a>
+  
+  <h1> BUSCAR ORDEN DE COMPRA </h1>
+
+<body>
+<form action="/buscarO" method="POST">
+    <ul>
+      
+        <label for="Proveedor">ID de Orden de compra:</label>
+        <input type="text" name="IDCompra"/>
+      
+      <p></p>
+      
+      <a class="button1">BUSCAR</a>
+
+      <h2> REGISTRADO </h2>
+
+      <table>
+        <thead>
+        <tr>
+            <th><label1>Nombre</label1></th>
+            <th><label1>Apellido Paterno</label1></th>
+            <th><label1>Apellido Materno</label1></th>
+            <th><label1>RFC</label1></th>
+            <th><label1>Empresa</label1></th>
+            <th><label1>Domicilio</label1></th>
+        
+        </tr>
+      </thead>
+        <tr>
+            <td>-</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tbody>
+          {%for alb in busprov %}
+          <tr>
+              <td>{{ alb.0 }}</td>
+              <td>{{ alb.1 }}</td>
+              <td>{{ alb.2 }}</td>
+              <td>{{ alb.3 }}</td>
+              <td>{{ alb.4 }}</td>
+              <td>{{ alb.5 }}</td>
+          </tr>
+          {%endfor %}
+      </tbody>
+    </table>
+
+      <p></p>
+      <p></p>
+      <p></p>
+      
+    </ul>
+  </form>
+</div>
+</body>
+
+</html>
