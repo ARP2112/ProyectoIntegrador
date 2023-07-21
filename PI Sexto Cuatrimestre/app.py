@@ -19,10 +19,14 @@ mysql=MySQL(app)
 #Ruta se compone de nombre y funcion
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('login.html')
 
 #app.route('/ingresar', methods={'GET','POST'})
 #def ingresarP():
+
+@app.route('/inicio')
+def inicio():
+    return render_template('index.html')
 
 @app.route('/requisiciones')
 def requisiciones():
