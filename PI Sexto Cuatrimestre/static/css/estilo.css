@@ -40,6 +40,22 @@ body {
     border-radius: 10px;
   }
 
+  input[type="number"],
+  texta {
+    width: 90%;
+    padding: 9px;
+    border: 1px solid #cccccc;
+    border-radius: 10px;
+  }
+
+  input[type="date"],
+  texta {
+    width: 20%;
+    padding: 9px;
+    border: 1px solid #cccccc;
+    border-radius: 10px;
+  }
+
   input[type="submit"] {
     background-color: #6797f0;
     color: #ffffff;

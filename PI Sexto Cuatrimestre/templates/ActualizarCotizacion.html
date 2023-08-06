@@ -1,17 +1,12 @@
+{% extends 'plantilla.html' %} 
+{% block body %}
+
 <!DOCTYPE html>
 <html lang="en">
   <title> Actualizar Cotizacion </title>
-   
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
   <link link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
   <div class="containerM">
-  
-    <a href="registrarC" class="button2">REGISTRAR COTIZACION</a>
-    <a href="buscarC" class="button2">BUSCAR COTIZACION</a>
-    <a href="consultarC" class="button2">CONSULTAR COTIZACION</a>
-    <a href="eliminarC" class="button2">ELIMINAR COTIZACION</a>
 
   <h1> ACTUALIZAR COTIZACION</h1>
 
@@ -65,3 +60,4 @@
   <p></p>
 
 </html>
+{% endblock %}

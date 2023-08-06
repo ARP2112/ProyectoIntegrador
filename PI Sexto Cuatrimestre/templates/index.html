@@ -1,24 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
-    <div class="containerM">
-    <title>Inicio</title>
 
-    <h1>INICIO</h1>
-    <br>
+    {% extends 'plantilla.html' %} 
 
-    <a href="requisiciones" class="button2">REQUISICIONES</a>
-    <a href="cotizaciones" class="button2">COTIZACIONES</a>
-    <a href="proovedores" class="button2">PROVEEDORES</a>
-    <a href="ordenCompra" class="button2">ORDENES DE COMPRA</a>
-    </div>
-</head>
-<body>
-    
-</body>
+    {% block body %}
+
 {%with mensajes=get_flashed_messages()%}
 {%if mensajes%}
     {%for msj in mensajes%}
@@ -26,4 +10,5 @@
     {%endfor%}
 {%endif%}
 {%endwith%}
-</html>
+
+{% endblock %}
