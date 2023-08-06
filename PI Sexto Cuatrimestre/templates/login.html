@@ -12,19 +12,30 @@
 <body>
   <div class="container">
     <center><h1>Login</h1></center>
-    <form>
-      <label for="nombre">Usuario:</label>
-      <input type="text" name="RFC" placeholder="Ingresa tu usuario">
 
-      <label for="email">Contraseña:</label>
-      <input type="text" name="contra" placeholder="Ingresa tu contraseña">
 
-      <label for="mensaje">Rol:</label>
-      <input type="text" name="rol" placeholder="Ingresa tu rol">
+    <form action="/login" method="POST">
 
-      <br><label for="rfc1"> </label></br>
+      {%with mensajes=get_flashed_messages()%}
+      {%if mensajes%}
+          {%for message in mensajes%}
+          
+              <h1>{{message}}</h1>
 
-      <a href="inicio" class="button2">INGRESAR</a>
+
+          {%endfor%}
+      {%endif%}
+      {%endwith%}
+
+      <label for="usuario">Usuario:</label>
+      <input type="text" name="Usuario" placeholder="Ingresa tu usuario">
+
+      <label for="contra">Contraseña:</label>
+      <input type="password" name="Contraseña" placeholder="Ingresa tu contraseña">
+
+      <br><label for="label"> </label></br>
+
+      <button type="submit">LOGIN</button>
     </form>
   </div>
 </body>

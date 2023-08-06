@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <title> Registrar Usuarios </title>
+   
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
+  <div class="containerM">
+
+  <h1> REGISTRAR USUARIOS</h1>
+
+<body>
+<form action="/registrarU" method="POST">
+    <ul>
+      
+        <label for="nombre">Nombre Completo:</label>
+        <input type="text" name="NombreC" placeholder="Ingresa el nombre completo" required/>
+
+      <p></p>
+
+        <label for="usuario">Usuario:</label>
+        <input type="text" name="Usuario" placeholder = "Ingresa el usuario" required/>
+      
+      <p></p>
+      
+        <label for="contraseña">Contraseña:</label>
+        <input type="text" name="Contraseña" placeholder="Ingresa una contraseña" required/>
+     
+      <p></p>
+
+      <p></p>
+      <p></p>
+      <p></p>
+        <button type="submit">GUARDAR USUARIO</button>
+           
+      
+    </ul>
+  </form>
+</div>
+</body>
+  <p></p>
+  {%with mensajes=get_flashed_messages()%}
+  {%if mensajes%}
+      {%for msj in mensajes%}
+          <h3>{{msj}}</h3>
+      {%endfor%}
+  {%endif%}
+{%endwith%}
+
+</html>

@@ -1,5 +1,17 @@
 from flask import Flask, render_template, request, redirect,url_for,flash #Importar libreria
+from flask_login import LoginManager, login_user, logout_user, login_required
+
+#Config
+from config import config
+
+#Database
 from flask_mysqldb import MySQL
+
+#Models
+from models.modelUser import ModelUser
+
+#Entities
+from models.entities.user import User
 
 app=Flask(__name__) #Inicializacion del servidor Flask
 
@@ -12,6 +24,11 @@ app.config['MYSQL_DB']="proyectointegrador" #Especificar a que base de datos
 app.secret_key='mysecretkey' #Permite hacer envios a traves de post
 
 mysql=MySQL(app)
+login_manager_app = LoginManager(app)
+
+@login_manager_app.user_loader
+def load_user(id):
+    return ModelUser.get_by_id(mysql, id)
 
 #Declaracion de rutas
 
@@ -21,28 +38,77 @@ mysql=MySQL(app)
 def index():
     return render_template('login.html')
 
-#app.route('/ingresar', methods={'GET','POST'})
-#def ingresarP():
+@app.route('/login', methods = ['GET', 'POST'])
+def login():
+    usuario=request.form['Usuario']
+    contraseña=request.form['Contraseña']
+    if request.method=='POST':
+        
+        user = User(0, usuario, contraseña)
+        logged_user = ModelUser.login(mysql, user)
+        if logged_user != None:
+            if logged_user.password:
+                login_user(logged_user)
+                return redirect(url_for('inicio'))
+            else:
+                flash ('Contraseña incorrecta')
+                return render_template ('login.html')
+        else:
+            flash ('Usuario no encontrado')
+            return render_template ('login.html')
+    else:
+        return render_template ('login.html')
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return render_template ('login.html')
 
 @app.route('/inicio')
+@login_required
 def inicio():
-    return render_template('index.html')
+    return render_template('inicio.html')
 
 @app.route('/requisiciones')
+@login_required
 def requisiciones():
     return render_template('RegistrarRequisicion.html')
 
 @app.route('/cotizaciones')
+@login_required
 def cotizaciones():
     return render_template('RegistrarCotizacion.html')
 
 @app.route('/proovedores')
+@login_required
 def proveedores():
     return render_template('RegistrarProveedor.html')
 
 @app.route('/ordenCompra')
+@login_required
 def ordenCompra():
     return render_template('RegistrarOrdenCompra.html')
+
+@app.route('/registrarUsuario')
+@login_required
+def registrarUsuario():
+    return render_template('RegistrarUsuario.html')
+
+#Registrar USUARIOS
+"""@app.route('/registrarU',methods=['GET','POST'])
+def registrarU():
+    if request.method=='POST': #Peticiones del usuario a traves del metodo POST
+        usuario=request.form['Usuario']
+        contraseña=request.form['Contraseña']
+        nombre=request.form['NombreC']
+        
+        CS=mysql.connection.cursor()
+        CS.execute('insert into Usuarios(nombreusuario, contraseña, Nombre_completo) values(%s,%s,%s)',
+                   (usuario, contraseña, nombre)) #Para ejecutar codigo sql, y pasamos parametros
+        mysql.connection.commit()
+
+    flash('Usuario registrado')
+    return render_template('RegistrarUsuario.html') #Reedireccionamiento a la vista index"""
 
 #Registrar
 @app.route('/registrarR',methods=['GET','POST'])
@@ -305,6 +371,20 @@ def borrarP(id):
 
     return render_template('EliminarProveedor.html', bprov=consultaID)
 
+
+#ERROR HTML PARA USUARIOS QUE NO HAN INGRESADO (ERROR 401)
+def status_401(error):
+    return redirect(url_for('login'))
+
+
+#ERROR HTML PARA URL NO ENCONTRADAS (ERROR 404)
+def status_404(eror):
+    return "<h1> Página no encontrada </h1>", 404
+
+
 #Ejecucion del servidor
 if __name__=='__main__':
+    app.config.from_object(config['development'])
+    app.register_error_handler(401, status_401)
+    app.register_error_handler(404, status_404)
     app.run(port=5005,debug=True) #Procurar que sea un puerto desocupado, debug(prendido)
