@@ -1,3 +1,7 @@
+{% extends 'plantilla.html' %} 
+
+{% block body %}
+
 <!DOCTYPE html>
 <html lang="en">
   <title> Actualizar Requisicion </title>
@@ -8,12 +12,6 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
   <div class="containerM">
-  
-    <a href="registrarR" class="button2">REGISTRAR REQUISICION</a>
-    <a href="buscarR" class="button2">BUSCAR REQUISICION</a>
-    <a href="consultarR" class="button2">CONSULTAR REQUISICION</a>
-    <a href="eliminarR" class="button2">ELIMINAR REQUISICION</a>
-
 
   <h1>ACTUALIZAR REQUICISIONES</h1>
 
@@ -67,4 +65,7 @@
   </form>
 </body>
 
+
+
 </html>
+{% endblock %}

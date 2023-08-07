@@ -1,35 +1,40 @@
+    {% extends 'plantilla.html' %} 
+
+    {% block body %}
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
     <div class="containerM">
+        
+
     <title>Inicio</title>
 
     <h1>INICIO</h1>
 
     <h2>Bienvenido, {{current_user.fullname}}</h2>
     <br>
-
-    <a href="requisiciones" class="button2">REQUISICIONES</a>
-    <a href="cotizaciones" class="button2">COTIZACIONES</a>
-    <a href="proovedores" class="button2">PROVEEDORES</a>
-    <a href="ordenCompra" class="button2">ORDENES DE COMPRA</a>
-    <br>
-    <br>
     <br>
     <a href="logout" class="button1">Logout</a>
-    </div>
-</head>
-<body>
     
+
+<body>
+
 </body>
 {%with mensajes=get_flashed_messages()%}
 {%if mensajes%}
     {%for msj in mensajes%}
-        <h3>{{msj}}</h3>
+
+    <script>Swal.fire({
+        "title":"Listo!",
+        "text":"{{msj}}",
+        "icon":"success"})</script>
+
     {%endfor%}
 {%endif%}
 {%endwith%}
+
+</div>
 </html>
+{% endblock %}

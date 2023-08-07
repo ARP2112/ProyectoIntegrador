@@ -1,3 +1,7 @@
+{% extends 'plantilla.html' %} 
+
+{% block body %}
+
 <!DOCTYPE html>
 <html lang="en">
   <title> Registrar Cotizacion </title>
@@ -7,11 +11,6 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
   <div class="containerM">
-  
-    <a href="eliminarC" class="button2">ELIMINAR COTIZACION</a>
-    <a href="buscarC" class="button2">BUSCAR COTIZACION</a>
-    <a href="consultarC" class="button2">CONSULTAR COTIZACION</a>
-    <a href="actualizarC" class="button2">ACTUALIZAR COTIZACION</a>
 
   <h1> REGISTRAR COTIZACION</h1>
 
@@ -24,12 +23,12 @@
       
       <p></p>
       
-        <label for="Validar">Validar</label>
+        <label for="Validar">Validar:</label>
         <input type="text" name="Validar" required/>
      
       <p></p>
       
-        <label for="Numero cotizacion">Numero cotizacion</label>
+        <label for="Numero cotizacion">Numero cotizacion:</label>
         <input type="number" name="Numero cotizacion" required/>
       
       <p></p>
@@ -69,9 +68,12 @@
   {%with mensajes=get_flashed_messages()%}
   {%if mensajes%}
       {%for msj in mensajes%}
-          <h3>{{msj}}</h3>
+          
+      <script>Swal.fire('Listo!','Cotización Registrada','success')</script>
+
       {%endfor%}
   {%endif%}
 {%endwith%}
 
 </html>
+{% endblock %}

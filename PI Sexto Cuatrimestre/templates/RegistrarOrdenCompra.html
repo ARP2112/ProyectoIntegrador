@@ -1,3 +1,7 @@
+{% extends 'plantilla.html' %} 
+
+{% block body %}
+
 <!DOCTYPE html>
 <html lang="en">
   <title> Registrar orden de compra </title>
@@ -7,11 +11,6 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
   <div class="containerM">
-  
-    <a href="eliminarO" class="button2">ELIMINAR ORDEN DE COMPRA</a>
-    <a href="buscarO" class="button2">BUSCAR ORDEN DE COMPRA</a>
-    <a href="consultarO" class="button2">CONSULTAR ORDEN DE COMPRA</a>
-    <a href="actualizarO" class="button2">ACTUALIZAR ORDEN DE COMPRA</a>
 
   <h1> REGISTRAR ORDEN DE COMPRA</h1>
 
@@ -42,9 +41,12 @@
   {%with mensajes=get_flashed_messages()%}
   {%if mensajes%}
       {%for msj in mensajes%}
-          <h3>{{msj}}</h3>
+          
+      <script>Swal.fire('Listo!','Orden de Compra Registrada','success')</script>
+
       {%endfor%}
   {%endif%}
 {%endwith%}
 
 </html>
+{% endblock %}

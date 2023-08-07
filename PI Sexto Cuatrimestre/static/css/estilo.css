@@ -42,6 +42,22 @@ body {
     border-radius: 10px;
   }
 
+  input[type="number"],
+  texta {
+    width: 20%;
+    padding: 9px;
+    border: 1px solid #cccccc;
+    border-radius: 10px;
+  }
+
+  input[type="date"],
+  texta {
+    width: 20%;
+    padding: 9px;
+    border: 1px solid #cccccc;
+    border-radius: 10px;
+  }
+
   input[type="password"],
   texta {
     width: 90%;

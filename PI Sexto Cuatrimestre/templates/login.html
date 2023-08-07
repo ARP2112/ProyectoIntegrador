@@ -1,3 +1,7 @@
+{% extends 'plantillaM.html' %} 
+
+{% block men %}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,9 +23,11 @@
       {%with mensajes=get_flashed_messages()%}
       {%if mensajes%}
           {%for message in mensajes%}
-          
-              <h1>{{message}}</h1>
-
+      
+              <script>Swal.fire({
+                "title":"Error!",
+                "text":"{{message}}",
+                "icon":"error"})</script>
 
           {%endfor%}
       {%endif%}
@@ -35,8 +41,9 @@
 
       <br><label for="label"> </label></br>
 
-      <button type="submit">LOGIN</button>
+      <button onclick="men" type="submit">LOGIN</button>
     </form>
   </div>
 </body>
 </html>
+{% endblock %}

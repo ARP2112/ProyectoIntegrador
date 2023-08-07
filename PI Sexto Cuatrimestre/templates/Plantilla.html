@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <title> ISRM </title>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+
+              <li class="nav-item dropdown">
+                <a class="navbar-brand nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  REQUISICIONES
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="requisiciones">Registrar Requisiciones</a></li>  
+                  <li><a class="dropdown-item" href="eliminarR">Eliminar Requisiciones</a></li>
+                  <li><a class="dropdown-item" href="buscarR">Buscar Requisiciones</a></li>
+                  <li><a class="dropdown-item" href="consultarR">Consultar Requisiciones</a></li>
+                  <li><a class="dropdown-item" href="actualizarR">Actualizar Requisiciones</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="navbar-brand nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  COTIZACIONES
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="cotizaciones">Registrar Cotizaciones</a></li>  
+                  <li><a class="dropdown-item" href="eliminarC">Eliminar Cotizaciones</a></li>
+                  <li><a class="dropdown-item" href="buscarC">Buscar Cotizaciones</a></li>
+                  <li><a class="dropdown-item" href="consultarC">Consultar Cotizaciones</a></li>
+                  <li><a class="dropdown-item" href="actualizarC">Actualizar Cotizaciones</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="navbar-brand nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  PROVEEDORES
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="proovedores">Registrar Proveedores</a></li>  
+                  <li><a class="dropdown-item" href="eliminarP">Eliminar Proveedores</a></li>
+                  <li><a class="dropdown-item" href="buscarP">Buscar Proveedores</a></li>
+                  <li><a class="dropdown-item" href="consultarP">Consultar Proveedores</a></li>
+                  <li><a class="dropdown-item" href="actualizarP">Actualizar Proveedores</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="navbar-brand nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    ORDENES DE COMPRA
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="ordenCompra">REGISTRAR REQUISICION</a></li>  
+                  <li><a class="dropdown-item" href="eliminarO">ELIMINAR REQUISICION</a></li>
+                  <li><a class="dropdown-item" href="buscarO">BUSCAR REQUISICION</a></li>
+                  <li><a class="dropdown-item" href="consultarO">CONSULTAR REQUISICION</a></li>
+                  <li><a class="dropdown-item" href="actualizarO">ACTUALIZAR REQUISICION</a></li>
+                </ul>
+              </li>
+
+            </ul>
+            
+          </div>
+        </div>
+      </nav>
+
+    {% block body %}
+
+    {% endblock %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  </body>
+</html>

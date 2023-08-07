@@ -1,3 +1,7 @@
+{% extends 'plantilla.html' %} 
+
+{% block body %}
+
 <!DOCTYPE html>
 <html lang="en">
   <title> Consultar Requisicion </title>
@@ -8,10 +12,6 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
   <div class="containerM">
-    <a href="eliminarR" class="button2">ELIMINAR REQUISICION</a>
-    <a href="buscarR" class="button2">BUSCAR REQUISICION</a>
-    <a href="registrarR" class="button2">REGISTRAR REQUISICION</a>
-    <a href="actualizarR" class="button2">ACTUALIZAR REQUISICION</a>
 
   <h1> CONSULTAR REQUISICION </h1>
   
@@ -56,8 +56,9 @@
                   <td>{{ alb.5 }}</td>
                   <td>{{ alb.6 }}</td>
                   <td>
-                    <a href="/editarR/{{ alb.0 }}">Editar</a>
-                    <a href="/borrarR/{{ alb.0 }}">Eliminar</a>
+                    <a href="/editarR/{{ alb.0 }}" class="btn btn-outline-warning"><i class="bi bi-pencil-square"></i></a>
+                    <a href="/borrarR/{{ alb.0 }}" class="btn btn-outline-danger"><i class="bi bi-trash"></i></a>
+
                 </td>
               </tr>
               {%endfor %}
@@ -74,3 +75,4 @@
 </body>
     
 </html>
+{% endblock %}

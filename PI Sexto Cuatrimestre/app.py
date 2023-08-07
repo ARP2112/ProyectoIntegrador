@@ -127,7 +127,7 @@ def registrarR():
         mysql.connection.commit()
 
     flash('Requisicion registrada')
-    return render_template('RegistrarRequisicion.html') #Reedireccionamiento a la vista index
+    return render_template('inicio.html') #Reedireccionamiento a la vista index
 
 @app.route('/registrarC',methods=['GET','POST'])
 def registrarC():
@@ -145,7 +145,7 @@ def registrarC():
         mysql.connection.commit()
 
     flash('Cotizacion registrada')
-    return render_template('RegistrarCotizacion.html') #Reedireccionamiento a la vista index
+    return render_template('inicio.html') #Reedireccionamiento a la vista index
 
 @app.route('/registrarP',methods=['GET','POST'])
 def registrarP():
@@ -163,11 +163,11 @@ def registrarP():
         mysql.connection.commit()
 
     flash('Proveedor registrado')
-    return render_template('RegistrarProveedor.html')
+    return render_template('inicio.html')
 
 @app.route('/registrarO',methods=['GET','POST'])
 def registrarO():
-    return render_template('RegistrarOrdenCompra.html')
+    return render_template('inicio.html')
 
 #Actualizar
 @app.route('/actualizarR/<id>',methods=['GET','POST'])
@@ -185,8 +185,8 @@ def actualizarR(id):
                    (Nfecha,Nnumad,Ncant,Npart,Ndescrip,Nas,id)) #Para ejecutar codigo sql, y pasamos parametros
         mysql.connection.commit()
 
-    flash('Requisicion actualizada')
-    return redirect(url_for('index')) #Reedireccionamiento a la vista index
+    flash('Requisición Actualizada')
+    return redirect(url_for('inicio')) #Reedireccionamiento a la vista index
 
 @app.route('/actualizarC/<id>',methods=['GET','POST'])
 def actualizarC(id):
@@ -203,8 +203,8 @@ def actualizarC(id):
                    (Nval,Nnumcot,Nfechac,Nem,Nrfc,Nidd,id)) #Para ejecutar codigo sql, y pasamos parametros
         mysql.connection.commit()
 
-    flash('Cotizacion actualizada')
-    return redirect(url_for('index'))
+    flash('Cotización Actualizada')
+    return redirect(url_for('inicio'))
 
 @app.route('/actualizarP/<id>',methods=['GET','POST'])
 def actualizarP(id):
@@ -221,8 +221,8 @@ def actualizarP(id):
                    (Nnombre,Nap,Nam,Nrfcp,Nempp,Niddp,id)) #Para ejecutar codigo sql, y pasamos parametros
         mysql.connection.commit()
 
-    flash('Proveedor actualizado')
-    return redirect(url_for('index'))
+    flash('Proveedor Actualizado')
+    return redirect(url_for('inicio'))
 
 #Editar pase de parametros --- ACTUALIZAR
 @app.route('/editarR/<id>')
@@ -320,8 +320,8 @@ def eliminarR(id):
     curDelete.execute('delete from requisicion where id_requisicion=%s', (id)) 
     mysql.connection.commit() #Para actualizar
 
-    flash('Requisicion eliminada correctamente')
-    return redirect(url_for('index'))
+    flash('Requisición Eliminada')
+    return redirect(url_for('inicio'))
 
 @app.route('/eliminarC/<id>', methods=['GET','POST'])
 def eliminarC(id):
@@ -329,8 +329,8 @@ def eliminarC(id):
     curDelete.execute('delete from cotizacion where id_cotizacion=%s', (id)) 
     mysql.connection.commit() #Para actualizar
 
-    flash('Cotizacion eliminada correctamente')
-    return redirect(url_for('index'))
+    flash('Cotización Eliminada')
+    return redirect(url_for('inicio'))
 
 @app.route('/eliminarP/<id>', methods=['GET','POST'])
 def eliminarP(id):
@@ -338,12 +338,12 @@ def eliminarP(id):
     curDelete.execute('delete from proveedores where id_proveedores=%s', (id)) 
     mysql.connection.commit() #Para actualizar
 
-    flash('Proveedor eliminada correctamente')
-    return redirect(url_for('index'))
+    flash('Proveedor Eliminado')
+    return redirect(url_for('inicio'))
 
 @app.route('/eliminarO', methods=['GET','POST'])
 def eliminarO():
-    return redirect(url_for('index'))
+    return redirect(url_for('inicio'))
 
 #Borrar para eliminar
 

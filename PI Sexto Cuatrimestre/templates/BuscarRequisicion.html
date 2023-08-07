@@ -1,3 +1,7 @@
+{% extends 'plantilla.html' %} 
+
+{% block body %}
+
 <!DOCTYPE html>
 <html lang="en">
   <title> Buscar Requisicion </title>
@@ -7,11 +11,6 @@
   <link link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
   <div class="containerM">
 
-  <a href="registrarR" class="button2">REGISTRAR REQUISICION</a>
-  <a href="actualizarR" class="button2">ACTUALIZAR REQUISICION</a>
-  <a href="consultarR" class="button2">CONSULTAR REQUISICION</a>
-  <a href="eliminarR" class="button2">ELIMINAR REQUISICION</a>
-  
   <h1> BUSCAR REQUISICION </h1>
 
 <body>
@@ -73,3 +72,4 @@
 </body>
 
 </html>
+{% endblock %}

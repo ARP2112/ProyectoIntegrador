@@ -1,3 +1,7 @@
+{% extends 'plantilla.html' %} 
+
+{% block body %}
+
 <!DOCTYPE html>
 <html lang="en">
   <title> Registrar Proveedor </title>
@@ -7,11 +11,6 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
   <div class="containerM">
-  
-    <a href="eliminarP" class="button2">ELIMINAR PROVEEDOR</a>
-    <a href="buscarP" class="button2">BUSCAR PROVEEDOR</a>
-    <a href="consultarP" class="button2">CONSULTAR PROVEEDOR</a>
-    <a href="actualizarP" class="button2">ACTUALIZAR PROVEEDOR</a>
 
   <h1> REGISTRAR PROVEEDOR</h1>
 
@@ -64,9 +63,12 @@
   {%with mensajes=get_flashed_messages()%}
   {%if mensajes%}
       {%for msj in mensajes%}
-          <h3>{{msj}}</h3>
+          
+      <script>Swal.fire('Listo!','Proveedor Registrado','success')</script>
+
       {%endfor%}
   {%endif%}
 {%endwith%}
 
 </html>
+{% endblock %}
