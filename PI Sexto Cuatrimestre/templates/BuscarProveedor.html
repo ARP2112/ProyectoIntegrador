@@ -14,21 +14,23 @@
   <h1> BUSCAR PROVEEDOR </h1>
 
 <body>
-<form action="/buscarP/" method="POST">
+<form action="/buscarP" method="POST">
     <ul>
       
-        <label for="Proveedor">ID de Proveedor:</label>
-        <input type="text" name="IDProveedor"/>
+        <label for="nombre">Nombre del proveedor:</label> <!--busqueda por nommbre proveedor-->
+        <input type="text" name="nombre"/>
       
       <p></p>
       
-      <a class="button1">BUSCAR</a>
+      <button type="submit">BUSCAR</button>
 
       <h2> REGISTRADO </h2>
 
       <table>
         <thead>
         <tr>
+
+          <th><label1>ID</label1></th>
             <th><label1>Nombre</label1></th>
             <th><label1>Apellido Paterno</label1></th>
             <th><label1>Apellido Materno</label1></th>
@@ -56,6 +58,7 @@
               <td>{{ alb.3 }}</td>
               <td>{{ alb.4 }}</td>
               <td>{{ alb.5 }}</td>
+              <td>{{ alb.6 }}</td>
           </tr>
           {%endfor %}
       </tbody>

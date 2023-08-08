@@ -306,11 +306,12 @@ def buscarC():
     consulta=curBusq.fetchall() #Para traer solo un registro
     return render_template('BuscarCotizacion.html', buscoti=consulta)
 
-@app.route('/buscarP/<id>',methods=['GET','POST'])
+@app.route('/buscarP',methods=['GET','POST'])
 def buscarP():
-    curSelect=mysql.connection.cursor()
-    curSelect.execute('select * from proveedores where id=%s', (id,))
-    consulta=curSelect.fetchone() #Para traer solo un registro
+    Bnom=request.form.get('nombre')
+    curBusq=mysql.connection.cursor()
+    curBusq.execute('select * from proveedores where nombre LIKE %s', (f'%{Bnom}%',))
+    consulta=curBusq.fetchall() #Para traer solo un registro
     return render_template('BuscarProveedor.html', busprov=consulta)
 
 @app.route('/buscarO',methods=['GET','POST'])
