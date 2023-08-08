@@ -460,7 +460,7 @@ def generar_pdf():
         c.drawString(30, 480, f"Domicilio: {edcoti[6]}")
         y -= 30
     
-    c.showPage()
+        c.showPage()
     c.save()
     
     pdf_content = buffer.getvalue()
@@ -500,7 +500,7 @@ def generarR_pdf():
         c.drawString(30, 480, f"Área del solicitante: {edcoti[6]}")
         y -= 30
     
-    c.showPage()
+        c.showPage()
     c.save()
     
     pdf_content = buffer.getvalue()
@@ -538,7 +538,7 @@ def generarP_pdf():
         c.drawString(30, 520, f"Domicilio: {edcoti[6]}")
         y -= 30
     
-    c.showPage()
+        c.showPage()
     c.save()
     
     pdf_content = buffer.getvalue()
