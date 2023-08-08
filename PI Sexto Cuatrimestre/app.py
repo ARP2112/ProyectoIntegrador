@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect,url_for,flash #Importar libreria
+from flask import Flask, render_template, request, redirect,url_for,flash, Response #Importar libreria
 from flask_login import LoginManager, login_user, logout_user, login_required
 
 #Config
@@ -12,6 +12,11 @@ from models.modelUser import ModelUser
 
 #Entities
 from models.entities.user import User
+
+#Importaciones para PDF
+from io import BytesIO
+from reportlab.lib.pagesizes import letter
+from reportlab.pdfgen import canvas
 
 app=Flask(__name__) #Inicializacion del servidor Flask
 
@@ -424,6 +429,124 @@ def borrarO(id):
     consultaID=curBorrar.fetchone() #Para traer unicamente un registro
 
     return render_template('EliminarOrdenCompra.html', boc=consultaID)
+
+#PDF COTIZACION
+@app.route('/generarC_pdf')
+def generar_pdf():
+    curSelect = mysql.connection.cursor()
+    curSelect.execute('SELECT * from Cotizacion')
+
+    consulta = curSelect.fetchall()
+
+    buffer = BytesIO()
+
+    c = canvas.Canvas(buffer, pagesize=letter)
+
+    width, height = letter
+    x, y = 50, height - 100
+
+    c.setFont('Helvetica-Bold', 20)
+    c.drawCentredString(width / 2, y, "COTIZACION")
+    y -= 30
+
+    c.setFont('Helvetica', 12)
+
+    for edcoti in consulta:
+        c.drawString(400, 580, f"Fecha: {edcoti[3]}")
+        c.drawString(30, 560, f"Validar: {edcoti[1]}")
+        c.drawString(30, 540, f"Numero de cotizacion: {edcoti[2]}")
+        c.drawString(30, 520, f"Empresa: {edcoti[4]}")
+        c.drawString(30, 500, f"RFC: {edcoti[5]}")
+        c.drawString(30, 480, f"Domicilio: {edcoti[6]}")
+        y -= 30
+    
+    c.showPage()
+    c.save()
+    
+    pdf_content = buffer.getvalue()
+    buffer.close()
+
+    response = Response(pdf_content, content_type='application/pdf')
+    response.headers['Content-Disposition'] = 'attachment; filename=cotizaciones_guardadas.pdf'
+    return response
+
+#PDF REQUISICION
+@app.route('/generarR_pdf')
+def generarR_pdf():
+    curSelect = mysql.connection.cursor()
+    curSelect.execute('SELECT * from requisicion')
+
+    consulta = curSelect.fetchall()
+
+    buffer = BytesIO()
+
+    c = canvas.Canvas(buffer, pagesize=letter)
+
+    width, height = letter
+    x, y = 50, height - 100
+
+    c.setFont('Helvetica-Bold', 20)
+    c.drawCentredString(width / 2, y, "REQUISICION")
+    y -= 30
+
+    c.setFont('Helvetica', 12)
+
+    for edcoti in consulta:
+        c.drawString(400, 580, f"Fecha: {edcoti[1]}")
+        c.drawString(30, 560, f"Numero de adquisición: {edcoti[2]}")
+        c.drawString(30, 540, f"Cantidad: {edcoti[3]}")
+        c.drawString(30, 520, f"Partida: {edcoti[4]}")
+        c.drawString(30, 500, f"Descripción: {edcoti[5]}")
+        c.drawString(30, 480, f"Área del solicitante: {edcoti[6]}")
+        y -= 30
+    
+    c.showPage()
+    c.save()
+    
+    pdf_content = buffer.getvalue()
+    buffer.close()
+
+    response = Response(pdf_content, content_type='application/pdf')
+    response.headers['Content-Disposition'] = 'attachment; filename=requisiciones_guardadas.pdf'
+    return response
+
+#PDF PROVEEDORES
+@app.route('/generarP_pdf')
+def generarP_pdf():
+    curSelect = mysql.connection.cursor()
+    curSelect.execute('SELECT * from proveedores')
+
+    consulta = curSelect.fetchall()
+
+    buffer = BytesIO()
+
+    c = canvas.Canvas(buffer, pagesize=letter)
+
+    width, height = letter
+    x, y = 50, height - 100
+
+    c.setFont('Helvetica-Bold', 20)
+    c.drawCentredString(width / 2, y, "PROVEEDORES")
+    y -= 30
+
+    c.setFont('Helvetica', 12)
+
+    for edcoti in consulta:
+        c.drawString(30, 580, f"Nombre: {edcoti[1]} {edcoti[2]} {edcoti[3]}")
+        c.drawString(30, 560, f"RFC: {edcoti[4]}")
+        c.drawString(30, 540, f"Empresa: {edcoti[5]}")
+        c.drawString(30, 520, f"Domicilio: {edcoti[6]}")
+        y -= 30
+    
+    c.showPage()
+    c.save()
+    
+    pdf_content = buffer.getvalue()
+    buffer.close()
+
+    response = Response(pdf_content, content_type='application/pdf')
+    response.headers['Content-Disposition'] = 'attachment; filename=proveedores_guardadas.pdf'
+    return response
 
 
 #ERROR HTML PARA USUARIOS QUE NO HAN INGRESADO (ERROR 401)
