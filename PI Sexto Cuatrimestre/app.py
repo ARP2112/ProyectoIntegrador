@@ -316,7 +316,11 @@ def buscarP():
 
 @app.route('/buscarO',methods=['GET','POST'])
 def buscarO():
-    return render_template('BuscarOrdenCompra.html')
+    Boc=request.form.get('numoc')
+    curBusq=mysql.connection.cursor()
+    curBusq.execute('select * from OrdenesCompra where numeroCompra LIKE %s', (f'%{Boc}%',))
+    consulta=curBusq.fetchall() #Para traer solo un registro
+    return render_template('BuscarOrdenCompra.html', busoc=consulta)
 
 #Consultar
 @app.route('/consultarR',methods=['GET','POST'])

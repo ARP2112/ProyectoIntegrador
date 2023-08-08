@@ -17,29 +17,29 @@
 <form action="/buscarO" method="POST">
     <ul>
       
-        <label for="Proveedor">ID de Orden de compra:</label>
-        <input type="text" name="IDCompra"/>
+        <label for="numoc">Numero de orden de compra:</label>
+        <input type="text" name="numoc"/>
       
       <p></p>
       
-      <a class="button1">BUSCAR</a>
+      <button type="submit">BUSCAR</button>
 
       <h2> REGISTRADO </h2>
 
       <table>
         <thead>
         <tr>
-            <th><label1>Nombre</label1></th>
-            <th><label1>Apellido Paterno</label1></th>
-            <th><label1>Apellido Materno</label1></th>
-            <th><label1>RFC</label1></th>
-            <th><label1>Empresa</label1></th>
-            <th><label1>Domicilio</label1></th>
+            <th><label1>ID</label1></th>
+            <th><label1>Numero de compra</label1></th>
+            <th><label1>Fecha</label1></th>
+            <th><label1>Descripcion</label1></th>
+            <th><label1>Cantidad</label1></th>
+            <th><label1>Precio total</label1></th>
         
         </tr>
       </thead>
         <tr>
-            <td>-</td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
@@ -48,7 +48,7 @@
             <td></td>
         </tr>
         <tbody>
-          {%for alb in busprov %}
+          {%for alb in busoc %}
           <tr>
               <td>{{ alb.0 }}</td>
               <td>{{ alb.1 }}</td>
