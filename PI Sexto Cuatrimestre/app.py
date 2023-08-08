@@ -289,21 +289,14 @@ def editarO(id):
 
 #Busq para vistas
 
-@app.route('/busqR/<id>' ,methods=['GET','POST'] )
-def busqR(id):
-    curSelect=mysql.connection.cursor()
-    curSelect.execute('select * from requisicion where id_requisicion=%s', (id,))
-    consultaRe=curSelect.fetchone() #Para traer solo un registro
-    
-    return render_template('BuscarRequisicion.html', busrequi=consultaRe)
-
 #Buscar
 @app.route('/buscarR',methods=['GET','POST'])
 def buscarR():
-    '''curSelect=mysql.connection.cursor()
-    curSelect.execute('select * from requisicion where id_requisicion=%s', (id,))
-    consulta=curSelect.fetchone() #Para traer solo un registro'''
-    return render_template('BuscarRequisicion.html')
+    Bas = request.form.get('Area_solicitante')
+    curBusq=mysql.connection.cursor()
+    curBusq.execute('select * from requisicion where areasolicitante LIKE %s', (f'%{Bas}%',))
+    consulta=curBusq.fetchall() #Para traer solo un registro'''
+    return render_template('BuscarRequisicion.html', busrequi=consulta)
 
 @app.route('/buscarC/<id>',methods=['GET','POST'])
 def buscarC():
