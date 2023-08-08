@@ -27,12 +27,11 @@
             <thead>
             <tr>
                 <th><label1>ID</label1></th>
-                <th><label1>Nombre</label1></th>
-                <th><label1>Apellido Paterno</label1></th>
-                <th><label1>Apellido Materno</label1></th>
-                <th><label1>RFC</label1></th>
-                <th><label1>Empresa</label1></th>
-                <th><label1>Domicilio</label1></th>
+                <th><label1>Numero de Compra</label1></th>
+                <th><label1>Fecha</label1></th>
+                <th><label1>Descripcion</label1></th>
+                <th><label1>Cantidad</label1></th>
+                <th><label1>Precio Total</label1></th>
             
             </tr>
             </thead>
@@ -46,7 +45,7 @@
                 <td></td>
             </tr>
             <tbody>
-              {%for alb in tbprov %}
+              {%for alb in tboc %}
               <tr>
                   <td>{{ alb.0 }}</td>
                   <td>{{ alb.1 }}</td>
@@ -54,7 +53,6 @@
                   <td>{{ alb.3 }}</td>
                   <td>{{ alb.4 }}</td>
                   <td>{{ alb.5 }}</td>
-                  <td>{{ alb.6 }}</td>
                   <td>
 
                     <a href="/editarO/{{ alb.0 }}" class="btn btn-outline-warning"><i class="bi bi-pencil-square"></i></a>

@@ -15,17 +15,30 @@
   <h1> ACTUALIZAR ORDEN DE COMPRA</h1>
 
 <body>
-<form action="/actulizarO" method="POST">
+<form action="/actualizarO/{{ edoc.0 }}" method="POST">
     <ul>
       
         <label for="Numero de compra">Numero de compra:</label>
-        <input type="text" name="NumCompra" required/>
+        <input type="text" name="NumCompra" value="{{ edoc.1 }}" required/>
       
       <p></p>
       
         <label for="Fecha">Fecha:</label>
-        <input type="date" name="Fecha" required/>
+        <input type="date" name="Fecha" value="{{ edoc.2 }}" required/>
+      
+        <p></p>
+      
+        <label for="Descripcion">Descripcion:</label>
+        <input type="text" name="Descripcion" value="{{ edoc.3 }}" required/>
     
+        <p></p>
+      
+        <label for="Cantidad">Cantidad:</label>
+        <input type="number" name="Cantidad" value="{{ edoc.4 }}" required/>
+        <p></p>
+      
+        <label for="PrecioTotal">PrecioTotal:</label>
+        <input type="number" name="PrecioTotal" value="{{ edoc.5 }}" required/>
       <p></p>
       <p></p>
       <p></p>

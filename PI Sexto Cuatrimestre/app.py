@@ -167,7 +167,20 @@ def registrarP():
 
 @app.route('/registrarO',methods=['GET','POST'])
 def registrarO():
-    return render_template('inicio.html')
+    if request.method=='POST': #Peticiones del usuario a traves del metodo POST
+        NnumC=request.form['NumCompra']
+        Nfecha=request.form['Fecha']
+        Ndesc=request.form['Descripcion']
+        Ncant=request.form['Cantidad']
+        Npt=request.form['PrecioTotal']
+        
+        CS=mysql.connection.cursor()
+        CS.execute('insert into OrdenesCompra(numeroCompra,fecha,descripcion,cantidad,preciototal) values(%s,%s,%s,%s,%s)',
+                   (NnumC,Nfecha,Ndesc,Ncant,Npt)) #Para ejecutar codigo sql, y pasamos parametros
+        mysql.connection.commit()
+
+    flash('Orden de compra registrada')
+    return render_template('RegistrarOrdenCompra.html')
 
 #Actualizar
 @app.route('/actualizarR/<id>',methods=['GET','POST'])
@@ -224,6 +237,23 @@ def actualizarP(id):
     flash('Proveedor Actualizado')
     return redirect(url_for('inicio'))
 
+@app.route('/actualizarO/<id>',methods=['GET','POST'])
+def actualizarO(id):
+    if request.method=='POST': #Peticiones del usuario a traves del metodo POST
+        NnumC=request.form['NumCompra']
+        Nfecha=request.form['Fecha']
+        Ndesc=request.form['Descripcion']
+        Ncant=request.form['Cantidad']
+        Npt=request.form['PrecioTotal']
+        
+        CS=mysql.connection.cursor()
+        CS.execute('update OrdenesCompra set numeroCompra=%s,fecha=%s,descripcion=%s,cantidad=%s,preciototal=%s where id_ordenesCompra=%s',
+                   (NnumC,Nfecha,Ndesc,Ncant,Npt,id)) #Para ejecutar codigo sql, y pasamos parametros
+        mysql.connection.commit()
+
+    flash('Orden de compra Actualizada')
+    return redirect(url_for('inicio'))
+
 #Editar pase de parametros --- ACTUALIZAR
 @app.route('/editarR/<id>')
 def editarR(id):
@@ -248,6 +278,14 @@ def editarP(id):
     consultaID=curEditar.fetchone() #Para traer unicamente un registro
 
     return render_template('ActualizarProveedor.html', edprov=consultaID)
+
+@app.route('/editarO/<id>')
+def editarO(id):
+    curEditar=mysql.connection.cursor()
+    curEditar.execute('select * from OrdenesCompra where id_ordenesCompra= %s', (id,))#Coma importante por que lo confunde con una tupla
+    consultaID=curEditar.fetchone() #Para traer unicamente un registro
+
+    return render_template('ActualizarOrdenCompra.html', edoc=consultaID)
 
 #Busq para vistas
 
@@ -311,7 +349,11 @@ def consultarP():
 
 @app.route('/consultarO',methods=['GET','POST'])
 def consultarO():
-    return render_template('ConsultarOrdenCompra.html')
+    curSelect=mysql.connection.cursor()
+    curSelect.execute('select * from ordenesCompra')
+    consulta=curSelect.fetchall() #Para traer varios registros
+    #print(consulta)
+    return render_template('ConsultarOrdenCompra.html', tboc=consulta)
 
 #Eliminar
 @app.route('/eliminarR/<id>', methods=['GET','POST'])
@@ -341,8 +383,13 @@ def eliminarP(id):
     flash('Proveedor Eliminado')
     return redirect(url_for('inicio'))
 
-@app.route('/eliminarO', methods=['GET','POST'])
-def eliminarO():
+@app.route('/eliminarO/<id>', methods=['GET','POST'])
+def eliminarO(id):
+    curDelete=mysql.connection.cursor()
+    curDelete.execute('delete from OrdenesCompra where id_ordenesCompra=%s', (id)) 
+    mysql.connection.commit() #Para actualizar
+
+    flash('Orden de compra Eliminada')
     return redirect(url_for('inicio'))
 
 #Borrar para eliminar
@@ -370,6 +417,14 @@ def borrarP(id):
     consultaID=curBorrar.fetchone() #Para traer unicamente un registro
 
     return render_template('EliminarProveedor.html', bprov=consultaID)
+
+@app.route('/borrarO/<id>')
+def borrarO(id):
+    curBorrar=mysql.connection.cursor()
+    curBorrar.execute('select * from OrdenesCompra where id_ordenesCompra= %s', (id,))#Coma importante por que lo confunde con una tupla
+    consultaID=curBorrar.fetchone() #Para traer unicamente un registro
+
+    return render_template('EliminarOrdenCompra.html', boc=consultaID)
 
 
 #ERROR HTML PARA USUARIOS QUE NO HAN INGRESADO (ERROR 401)
