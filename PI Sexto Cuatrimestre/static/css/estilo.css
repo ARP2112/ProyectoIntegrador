@@ -186,3 +186,43 @@ body {
   th {
     background-image:image-set("image table.jpg");
   }
+
+  /* Estilo para el menú desplegable */
+.custom-select {
+  width: 200px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: white;
+  color: #333;
+}
+
+/* Estilo para las opciones dentro del menú desplegable */
+.custom-select option {
+  padding: 8px;
+  font-size: 14px;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* Cambiar el color de las opciones cuando se pasan el mouse por encima */
+.custom-select option:hover {
+  background-color: #ddd;
+}
+
+
+.image {
+  width: 100%;
+  height: auto;
+  display: block;
+  
+ 
+margin: 0 auto;
+}
+
+
+
+
+
+

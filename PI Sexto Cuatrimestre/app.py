@@ -1,4 +1,6 @@
 from flask import Flask, render_template, request, redirect,url_for,flash, Response #Importar libreria
+
+#LOGIN
 from flask_login import LoginManager, login_user, logout_user, login_required
 
 #Config
@@ -124,11 +126,11 @@ def registrarR():
         Ncant=request.form['Cantidad']
         Npart=request.form['Partida']
         Ndescrip=request.form['Descripcion']
-        Nas=request.form['Area_solicitante']
+        seleccion = request.form['opcion']
         
         CS=mysql.connection.cursor()
         CS.execute('insert into requisicion(fecha,numeroadquisicion,cantidad,partida,descripcion,areasolicitante) values(%s,%s,%s,%s,%s,%s)',
-                   (Nfecha,Nnumad,Ncant,Npart,Ndescrip,Nas)) #Para ejecutar codigo sql, y pasamos parametros
+                   (Nfecha,Nnumad,Ncant,Npart,Ndescrip,seleccion)) #Para ejecutar codigo sql, y pasamos parametros
         mysql.connection.commit()
 
     flash('Requisicion registrada')
@@ -137,7 +139,7 @@ def registrarR():
 @app.route('/registrarC',methods=['GET','POST'])
 def registrarC():
     if request.method=='POST': #Peticiones del usuario a traves del metodo POST
-        Nval=request.form['Validar']
+        seleccion1=request.form['opcionValidar']
         Nnumcot=request.form['Numero cotizacion']
         Nfechac=request.form['Fecha']
         Nem=request.form['Empresa']
@@ -146,7 +148,7 @@ def registrarC():
       
         CS=mysql.connection.cursor()
         CS.execute('insert into cotizacion(validar,numerocotizacion,fecha,empresa,rfc,domicilio) values(%s,%s,%s,%s,%s,%s)',
-                   (Nval,Nnumcot,Nfechac,Nem,Nrfc,Nidd)) #Para ejecutar codigo sql, y pasamos parametros
+                   (seleccion1,Nnumcot,Nfechac,Nem,Nrfc,Nidd)) #Para ejecutar codigo sql, y pasamos parametros
         mysql.connection.commit()
 
     flash('Cotizacion registrada')
